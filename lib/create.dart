@@ -1,6 +1,7 @@
+library;
+
 /// Este arquivo demonstra como enviar (POST) um novo livro para a API REST
 /// utilizando a biblioteca Dio em Dart.
-library;
 
 import 'package:dio/dio.dart'; // Importa a biblioteca Dio para realizar requisições HTTP.
 

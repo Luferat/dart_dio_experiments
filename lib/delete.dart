@@ -1,8 +1,9 @@
+library;
+
 /// lib/delete_book.dart
 /// Este arquivo demonstra como "desativar" um livro na API REST,
 /// atualizando seu status para "OFF" usando a biblioteca Dio em Dart.
 /// Ele solicita o ID do livro ao usuário via terminal.
-library;
 
 import 'dart:io'; // Importa a biblioteca para entrada/saída de console
 import 'package:dio/dio.dart'; // Importa a biblioteca Dio para realizar requisições HTTP.
@@ -18,9 +19,7 @@ Future<void> deactivateBook(int bookId) async {
   final String apiUrl = 'http://localhost:8080/books/$bookId';
 
   // O corpo da requisição conterá apenas o campo 'status' a ser atualizado para "OFF".
-  final Map<String, String> updateData = {
-    'status': 'OFF',
-  };
+  final Map<String, String> updateData = {'status': 'OFF'};
 
   // Inicia um bloco try-catch para gerenciar possíveis erros.
   try {
@@ -50,7 +49,9 @@ Future<void> deactivateBook(int bookId) async {
   } on DioException catch (e) {
     // Captura exceções específicas do Dio.
     if (e.response != null) {
-      print('Erro do servidor ao desativar livro: Status ${e.response!.statusCode}');
+      print(
+        'Erro do servidor ao desativar livro: Status ${e.response!.statusCode}',
+      );
       if (e.response!.statusCode == 404) {
         print('Detalhe: Livro com ID $bookId não existe na API.');
       } else {
@@ -69,7 +70,9 @@ Future<void> deactivateBook(int bookId) async {
 // Função main para demonstrar o uso da função deactivateBook.
 void main() async {
   print('--- Ferramenta de Desativação de Livros ---');
-  stdout.write('Digite o ID do livro que deseja desativar (definir status para "OFF"): ');
+  stdout.write(
+    'Digite o ID do livro que deseja desativar (definir status para "OFF"): ',
+  );
 
   // Lê a entrada do usuário.
   String? input = stdin.readLineSync();

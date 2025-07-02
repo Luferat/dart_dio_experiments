@@ -1,7 +1,8 @@
+library;
+
 /// Este arquivo demonstra como fazer uma requisição HTTP GET para uma API REST
 /// que retorna dados no formato JSON, utilizando a biblioteca Dio em Dart.
 /// Neste exemplo, recebemos apenas um item identificado pelo Id que será solicitado no terminal;
-library;
 
 import 'dart:io'; // Importa a biblioteca para entrada/saída de console
 import 'package:dio/dio.dart'; // Importa a biblioteca Dio, essencial para requisições HTTP avançadas.
@@ -20,7 +21,9 @@ Future<void> main() async {
 
   // Tenta converter a entrada do usuário para um número inteiro.
   // int.tryParse() é seguro porque retorna null se a string não for um número válido.
-  int? bookId = int.tryParse(input ?? ''); // Usa '??' para garantir que input não é nulo
+  int? bookId = int.tryParse(
+    input ?? '',
+  ); // Usa '??' para garantir que input não é nulo
 
   // Verifica se o ID do livro é válido
   if (bookId == null) {
@@ -35,7 +38,9 @@ Future<void> main() async {
     // O JSON Server, quando filtrado por parâmetros de consulta, retorna uma LISTA,
     // mesmo que haja apenas um item correspondente.
     // O 'await' pausa a execução deste código até que a resposta da API chegue.
-    final response = await _dio.get('http://localhost:8080/books?id=$bookId&status=ON');
+    final response = await _dio.get(
+      'http://localhost:8080/books?id=$bookId&status=ON',
+    );
 
     // Verifica se o status da resposta HTTP indica sucesso (código 200 OK).
     if (response.statusCode == 200) {
@@ -59,8 +64,8 @@ Future<void> main() async {
           String priceString = (item['price'] as num)
               .toDouble()
               .toStringAsFixed(
-            2, // Número de casas decimais fixas (duas).
-          );
+                2, // Número de casas decimais fixas (duas).
+              );
           // Substitui o ponto '.' pelo caractere de vírgula ',' na string do preço formatado.
           // E concatena com o prefixo 'R$ ' para formar o preço no formato brasileiro.
           formattedPrice = 'R\$ ${priceString.replaceAll('.', ',')}';
@@ -79,7 +84,6 @@ ${item['description']}
  • ISBN: ${item['isbn']}
 Preço: R\$ $formattedPrice
         ''');
-
       } else {
         // Se a lista estiver vazia, significa que o livro com o ID e status 'ON' não foi encontrado.
         print('Livro com ID $bookId não encontrado.');

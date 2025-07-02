@@ -1,4 +1,6 @@
-/// Esta lib demonstra como fazer uma requisição HTTP GET para uma API REST
+library; // Declara que este é um arquivo de biblioteca (opcional para main.dart)
+
+// / Esta lib demonstra como fazer uma requisição HTTP GET para uma API REST
 /// que retorna dados no formato JSON, utilizando a biblioteca Dio no Dart.
 /// O Dio simplifica o processo de comunicação com APIs externas, oferecendo
 /// funcionalidades robustas e um tratamento de erros mais amigável.
@@ -11,10 +13,6 @@
 /// Referências: https://pub.dev/packages/dio
 ///
 /// OBS: os comentários à seguir foram gerados por IA e ajustados quando necessário
-///
-/// Em Flutter, em vez de enviar os dados de "allItems" para o terminal usando
-/// print(), salve no "state" para usar na view (Scafold()) do aplicativo.
-library; // Declara que este é um arquivo de biblioteca (opcional para main.dart)
 
 // Importa a biblioteca Dio, essencial para requisições HTTP avançadas.
 import 'package:dio/dio.dart';
